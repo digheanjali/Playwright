@@ -1,0 +1,1 @@
+npx playwright test TC01Basiclogin.spec.js // run test commands
