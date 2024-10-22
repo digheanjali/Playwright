@@ -1,41 +1,41 @@
 const { test, expect } = require('@playwright/test')
 const exp = require('constants')
-// let id = `res2.${id}`
-//API ==> Application programing interface
+let id =
+    //API ==> Application programing interface
 
-//Create 
-//Update 
-//Retrive 
-//Delete 
-//CRUD opretions 
+    //Create 
+    //Update 
+    //Retrive 
+    //Delete 
+    //CRUD opretions 
 
-//GET ==> information retrive
-//POST ==> Create
-//PUT ==> Update
-//Delete ==> delete info 
+    //GET ==> information retrive
+    //POST ==> Create
+    //PUT ==> Update
+    //Delete ==> delete info 
 
-//URL 
-//https://reqres.in/api/users   ?page=2
-//BaseURl                        query para
-//https://reqres.in/api/users    /2
-//BaseURl                       PathPara
+    //URL 
+    //https://reqres.in/api/users   ?page=2
+    //BaseURl                        query para
+    //https://reqres.in/api/users    /2
+    //BaseURl                       PathPara
 
-test('Verify API GET REQUEST', async ({ request }) => {
-    let req = await request.get('https://reqres.in/api/users?page=2')
-    // console.log(req)
-    console.log(await req.status())
-    console.log(await req.json())
-    let res = await req.json()
-    console.log(await res.total)
-    console.log(res.data[0].first_name)
-    console.log(res.data[1].last_name)
+    test('Verify API GET REQUEST', async ({ request }) => {
+        let req = await request.get('https://reqres.in/api/users?page=2')
+        // console.log(req)
+        console.log(await req.status())
+        console.log(await req.json())
+        let res = await req.json()
+        console.log(await res.total)
+        console.log(res.data[0].first_name)
+        console.log(res.data[1].last_name)
 
-    expect(res.page).toBe(2)
-    expect(res.per_page).toBe(6)
-    expect(req.status()).toBe(200)
+        expect(res.page).toBe(2)
+        expect(res.per_page).toBe(6)
+        expect(req.status()).toBe(200)
 
 
-})
+    })
 
 test.only('vrify API POST REQUEST', async ({ request }) => {
     let req = await request.post('https://reqres.in/api/users', {
@@ -52,7 +52,7 @@ test.only('vrify API POST REQUEST', async ({ request }) => {
     expect(res2.name).toBe('Anjali')
     expect(res2.job).toBe('Teacher')
     expect(req.status()).toBe(201)
-    let id = await res2.id
+    id = await res2.id
 
     console.log(id)
 

@@ -14,8 +14,34 @@ test('Handling webTable in playwright', async ({ page }) => {
 
     let rowsCount = await table.locator('tbody > tr').count()
     console.log(`Rows count = ${rowsCount}`)
+
+    // select cheakbox for single product
+
+    let rows = await table.locator('tbody>tr')
+    let matchrow = rows.filter({
+        has: page.locator('td'),
+        hasText: 'Tablet'
+    })
+
+    await matchrow.locator('input').check()
+    await page.waitForTimeout(2000)
+
+
+    //select checkbox for multiple products 
+    await checkProducts(rows, page, 'Laptop')
+    await checkProducts(rows, page, 'Smartwatch')
+    await checkProducts(rows, page, 'Wireless Earbuds')
+    await page.waitForTimeout(5000)
 })
 
+
+async function checkProducts(row, page, productName) {
+    let matchRow = row.filter({
+        has: page.locator('td'),
+        hasText: productName
+    })
+    await matchRow.locator('input').check()
+}
 // //thead ==> Table header
 //tr ==> Table row
 //tbody ==> Table body
